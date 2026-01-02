@@ -1,0 +1,4 @@
+# CLI Commands
+"C:\Users\DELL\AppData\Local\Programs\Python\Python310\python.exe" -m pip install pygame
+
+"C:\Users\DELL\AppData\Local\Programs\Python\Python310\python.exe" playchess.py
