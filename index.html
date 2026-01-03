@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Master AI (Web Version)</title>
+    <!-- PyScript core CSS and JS -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+    
+    <!-- Custom CSS for your game layout -->
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #312e2b; /* Match your game's background */
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #game-container {
+            border: 2px solid #555;
+            /* The Pygame.js canvas will be rendered inside this container */
+            /* Set a fixed size for the canvas, e.g., 800x800 for the board */
+            width: 800px; 
+            height: 800px;
+            position: relative; /* Important for canvas positioning */
+        }
+        #pyscript-status {
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chess Master AI</h1>
+    <div id="game-container"></div>
+    <div id="pyscript-status">Loading game...</div>
+
+    <!-- PyScript configuration and game code -->
+    <py-config>
+        # List any Python packages your game needs that are available on Pyodide
+        # 'pygame-ce' is the community edition of Pygame, often used with Pyodide
+        packages = ["pygame-ce"]
+        paths = [s from directories listed here
+            "./pi
+        .p  
+    </py-config>
+
+    <py-script src="./web_main.py">
+        # This tag will execute the Python code from web_game.py
+        # The main game loop will be initiated from here.
+    </py-script>
+
+ status
+        document.addEventListener("py-ready", () => {
+            document.getElementById("pyscript-status").innerText = "Game Loaded! Click to start.";
+        });
+        document.addEventListener("py-loading", (e) => {
+            document.getElementById("pyscript-status").innerText = `Loading: ${e.detail.message}`;
+        });
+    </script>
+</body>
+</html>
