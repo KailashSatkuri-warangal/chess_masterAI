@@ -48,9 +48,15 @@
         # List any Python packages your game needs that are available on Pyodide
         # 'pygame-ce' is the community edition of Pygame, often used with Pyodide
         packages = ["pygame-ce"]
-        paths = [s from directories listed here
-            "./pi
-        .p  
+        # Paths to your Python game files (relative to index.html)
+        paths = [
+            "./web_main.py",
+            "./game_engine/chess_game_logic.py",
+            "./web_ui/web_game_ui.py",
+            "./board/", # PyScript can import modules from directories listed here
+            "./pieces/", # This includes your piece classes, not the sound files
+            "./player/"
+        ]
     </py-config>
 
     <py-script src="./web_main.py">
@@ -58,7 +64,7 @@
         # The main game loop will be initiated from here.
     </py-script>
 
- status
+    <script>
         document.addEventListener("py-ready", () => {
             document.getElementById("pyscript-status").innerText = "Game Loaded! Click to start.";
         });
