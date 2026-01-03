@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess Master AI (Web Version)</title>
+    <title>PyScript Debug Test</title>
     <!-- PyScript core CSS and JS -->
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
@@ -11,57 +11,24 @@
     <!-- Custom CSS for your game layout -->
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #312e2b; /* Match your game's background */
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: white;
-        }
-        h1 {
-            margin-bottom: 20px;
-        }
-        #game-container {
-            border: 2px solid #555;
-            /* The Pygame.js canvas will be rendered inside this container */
-            /* Set a fixed size for the canvas, e.g., 800x800 for the board */
-            width: 800px; 
-            height: 800px;
-            position: relative; /* Important for canvas positioning */
-        }
-        #pyscript-status {
-            margin-top: 10px;
-            font-size: 0.9em;
+            font-family: sans-serif;
+            margin: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Chess Master AI</h1>
-    <div id="game-container"></div>
-    <div id="pyscript-status">Loading game...</div>
+    <h1>PyScript Debug Test</h1>
+    <div id="pyscript-status">Loading PyScript...</div>
 
     <!-- PyScript configuration and game code -->
     <py-config>
-        # List any Python packages your game needs that are available on Pyodide
-        # 'pygame-ce' is the community edition of Pygame, often used with Pyodide
-        packages = ["pygame-ce"] # Ensure pygame-ce is installed in the Pyodide environment
-        # Paths to your Python game files (relative to index.html)
-        paths = [
-            "./web_main.py",
-            "./game_engine/", # PyScript will find modules inside this directory
-            "./web_ui/",      # PyScript will find modules inside this directory
-            "./board/", # PyScript can import modules from directories listed here
-            "./pieces/", # This includes your piece classes, not the sound files
-            "./player/"
-        ]
+        # No packages or paths needed for this basic test
     </py-config>
 
-    <py-script src="./web_main.py">
-        # This tag will execute the Python code from web_game.py
-        # The main game loop will be initiated from here.
+    <py-script>
+        print("Hello from PyScript! If you see this, PyScript is working.")
+        import sys
+        print(f"Python version: {sys.version}")
     </py-script>
 
     <script>
