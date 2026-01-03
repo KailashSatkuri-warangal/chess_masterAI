@@ -47,12 +47,12 @@
     <py-config>
         # List any Python packages your game needs that are available on Pyodide
         # 'pygame-ce' is the community edition of Pygame, often used with Pyodide
-        packages = ["pygame-ce"]
+        packages = ["pygame-ce"] # Ensure pygame-ce is installed in the Pyodide environment
         # Paths to your Python game files (relative to index.html)
         paths = [
             "./web_main.py",
-            "./game_engine/chess_game_logic.py",
-            "./web_ui/web_game_ui.py",
+            "./game_engine/", # PyScript will find modules inside this directory
+            "./web_ui/",      # PyScript will find modules inside this directory
             "./board/", # PyScript can import modules from directories listed here
             "./pieces/", # This includes your piece classes, not the sound files
             "./player/"
