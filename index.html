@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PyScript Debug Test</title>
+    <title>Chess Master AI (Web Version)</title>
     <!-- PyScript core CSS and JS -->
     <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
     <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
@@ -11,26 +11,58 @@
     <!-- Custom CSS for your game layout -->
     <style>
         body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #312e2b; /* Match your game's background */
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        #game-container {
+            border: 2px solid #555;
+            /* The Pygame.js canvas will be rendered inside this container */
+            /* Set a fixed size for the canvas, e.g., 800x800 for the board */
+            width: 1000px; /* Adjusted to match TOTAL_WIDTH in web_game_ui.py */
+            height: 800px; /* Adjusted to match TOTAL_HEIGHT in web_game_ui.py */
+            position: relative; /* Important for canvas positioning */
+        }
+        #pyscript-status {
+            margin-top: 10px;
+            font-size: 0.9em;
             font-family: sans-serif;
-            margin: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>PyScript Debug Test</h1>
-    <div id="pyscript-status">Loading PyScript...</div>
+    <h1>Chess Master AI</h1>
+    <div id="game-container"></div>
+    <div id="pyscript-status">Loading game...</div>
 
-    <!-- PyScript configuration and game code -->
+    <!-- PyScript configuration -->
     <py-config>
-        # No packages or paths needed for this basic test
+        packages = [
+            "pygame-ce"
+        ]
+        paths = [
+            "./web_main.py",
+            "./game_engine/",
+            "./web_ui/",
+            "./board/",
+            "./pieces/",
+            "./player/"
+        ]
     </py-config>
 
-    <py-script>
-        print("Hello from PyScript! If you see this, PyScript is working.")
-        import sys
-        print(f"Python version: {sys.version}")
-    </py-script>
+    <!-- PyScript entry point for your game -->
+    <py-script src="./web_main.py"></py-script>
 
+    <!-- JavaScript for loading status -->
     <script>
         document.addEventListener("py-ready", () => {
             document.getElementById("pyscript-status").innerText = "Game Loaded! Click to start.";
